@@ -46,6 +46,7 @@ function handlerMore() {
   page += 1;
   search(request, page).then(response => {
     if (page === response.data.totalHits / 40) {
+     
       Notify.failure(
         "We're sorry, but you've reached the end of search results."
       );
