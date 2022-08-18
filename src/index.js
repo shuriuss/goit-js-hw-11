@@ -45,6 +45,11 @@ function handler(e) {
 function handlerMore() {
   page += 1;
   search(request, page).then(response => {
+    
+    const data = response.data.hits;
+    data.forEach(element => {
+      render(element);
+    });
     if (response.data.totalHits  < page * 40) {
      
       Notify.failure(
@@ -55,11 +60,6 @@ function handlerMore() {
 
       retern;
     }
-
-    const data = response.data.hits;
-    data.forEach(element => {
-      render(element);
-    });
   });
 }
 
